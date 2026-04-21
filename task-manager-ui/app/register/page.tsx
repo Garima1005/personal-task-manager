@@ -31,7 +31,7 @@ export default function RegisterPage() {
             router.push("/login");
         } catch (err) {
             if (axios.isAxiosError(err)) {
-                toast.error(err.response?.data?.message || "Registration failed");
+                toast.error(err.response?.data?.message || err.response?.data?.error || "Registration failed");
             } else {
                 toast.error("An unexpected error occurred");
             }

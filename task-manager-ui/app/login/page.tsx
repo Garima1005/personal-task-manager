@@ -33,12 +33,11 @@ export default function LoginPage() {
             if (response.data.refreshToken) {
                 localStorage.setItem("refreshToken", response.data.refreshToken);
             }
-
             toast.success("Logged in successfully! Redirecting...");
             router.push("/dashboard");
         } catch (err) {
             if (axios.isAxiosError(err)) {
-                toast.error(err.response?.data?.message || "Login failed");
+                toast.error(err.response?.data?.message || err.response?.data?.error || "Login failed");
             } else {
                 toast.error("An unexpected error occurred");
             }
